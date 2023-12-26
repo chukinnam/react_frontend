@@ -28,6 +28,7 @@ const Loginpages = () => {
   //handle login
   const submit = (event) => {
     event.preventDefault();
+    // call redux login function adn pass value
     dispatch(login(formValue));
   };
   //test get profile

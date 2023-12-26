@@ -1,14 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authServer from "../../servers/authServer";
 
-//createAsyncThunk --> data from server and update redux status
+//createAsyncThunk --> data get from server and update redux status async
+//"auth/login" just a name
+//thunk action same as authSlice.actions;
 export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   try {
+    // wait server return value
     const data = await authServer.login(user);
-    console.log("slices", data);
-    if (data.success) {
+    if (data.successç) {
+      //id success "fulfilled" will do
       return data;
     } else {
+      // if false "reject" status will do
       return thunkAPI.rejectWithValue(data.message);
     }
   } catch (error) {
@@ -35,6 +39,8 @@ const authSlice = createSlice({
       state.message = null;
     },
   },
+  //for handle createAsyncThunk function update
+  //previous login function
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
