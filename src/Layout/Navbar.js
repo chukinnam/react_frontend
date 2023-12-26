@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import AllProduct from "../pages/AllProduct";
 import Brands from "../pages/Brands";
+import Loginpages from "../pages/Loginpages";
 import Man from "../pages/Man";
 import Women from "../pages/Women";
 const Navbar = () => {
@@ -28,6 +29,9 @@ const Navbar = () => {
           <li className="item">
             <Link to="/women">Women</Link>
           </li>
+          <li className="login">
+            <Link to="login">login</Link>
+          </li>
         </ul>
       </div>
       <Routes>
@@ -35,6 +39,7 @@ const Navbar = () => {
         <Route path="/brands" element={<Brands />} />
         <Route path="/man" element={<Man />} />
         <Route path="/women" element={<Women />} />
+        <Route path="/login" element={<Loginpages />} />
       </Routes>
     </>
   );
