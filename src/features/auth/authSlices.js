@@ -8,7 +8,7 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   try {
     // wait server return value
     const data = await authServer.login(user);
-    if (data.successç) {
+    if (data.success) {
       //id success "fulfilled" will do
       return data;
     } else {
@@ -19,6 +19,22 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
     console.log(error);
   }
 });
+//register
+export const register = createAsyncThunk(
+  "auth/register",
+  async (user, thunkAPI) => {
+    try {
+      const data = await authServer.register(user);
+      if (data.success) {
+        return data;
+      } else {
+        return thunkAPI.rejectWithValue(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 //get user information from localstorage
 const user = JSON.parse(localStorage.getItem("user"));
 //create a auth slice
@@ -55,6 +71,11 @@ const authSlice = createSlice({
         state.user = null;
         state.auth = false;
         state.message = action.payload;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.auth = true;
       });
   },
 });

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../features/auth/authSlices";
+import Button from "../components/Button";
 const Loginpages = () => {
   // use navigation to redirect
   const navigate = useNavigate();
@@ -16,8 +17,6 @@ const Loginpages = () => {
   useEffect(() => {
     if (auth) {
       navigate("/all_products");
-    } else {
-      console.log("login again");
     }
   }, [auth, user, loading, message, dispatch, navigate]);
   //handle input value
@@ -31,17 +30,6 @@ const Loginpages = () => {
     // call redux login function adn pass value
     dispatch(login(formValue));
   };
-  //test get profile
-  const getProfile = async () => {
-    const response = await fetch("/api/user/profile", {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-    });
-    const data = await response.json();
-    console.log(data);
-  };
-
   return (
     <section>
       <div className="LoginContainer">
@@ -67,16 +55,16 @@ const Loginpages = () => {
                 value={formValue.password}
               ></input>
             </div>
-            <div className="submit">
+            <div className="form button">
               <input type="submit" value="Submit" />
+              <Button
+                redirect={true}
+                redirectPath={"register"}
+                name={"Register"}
+              />
             </div>
-            <div></div>
           </form>
         </div>
-      </div>
-
-      <div>
-        <button onClick={getProfile}></button>
       </div>
     </section>
   );
