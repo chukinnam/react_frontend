@@ -9,6 +9,8 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
     // wait server return value
     const data = await authServer.login(user);
     if (data.success) {
+      localStorage.setItem("auth", true);
+      localStorage.setItem("user", JSON.stringify(data));
       //id success "fulfilled" will do
       return data;
     } else {
@@ -26,6 +28,8 @@ export const register = createAsyncThunk(
     try {
       const data = await authServer.register(user);
       if (data.success) {
+        localStorage.setItem("auth", true);
+        localStorage.setItem("user", JSON.stringify(data));
         return data;
       } else {
         return thunkAPI.rejectWithValue(data.message);
@@ -35,14 +39,16 @@ export const register = createAsyncThunk(
     }
   }
 );
+//redux will clean value after refresh
 //get user information from localstorage
 const user = JSON.parse(localStorage.getItem("user"));
+const auth = localStorage.getItem("auth");
 //create a auth slice
 const authSlice = createSlice({
   name: "auth",
   //init value
   initialState: {
-    auth: false,
+    auth: auth ? auth : null,
     user: user ? user : null,
     loading: false,
     message: null,

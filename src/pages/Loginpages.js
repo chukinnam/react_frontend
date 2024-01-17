@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../features/auth/authSlices";
-import Button from "../components/Button";
+import Button from "../components/ButtonRedirect";
 const Loginpages = () => {
   // use navigation to redirect
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const [formValue, setFormValue] = useState({
     username: "",

@@ -9,6 +9,8 @@ const Button = (props) => {
     backgroundColor: "#ffffff",
     cursor: "pointer",
     padding: "5px 10px",
+    minWidth: "100px",
+    margin: "5px",
   };
   const navigate = useNavigate();
   const handlebutton = (e) => {

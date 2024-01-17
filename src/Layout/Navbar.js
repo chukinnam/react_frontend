@@ -7,7 +7,21 @@ import Loginpages from "../pages/Loginpages";
 import Man from "../pages/Man";
 import Register from "../pages/Register";
 import Women from "../pages/Women";
+import { useSelector } from "react-redux";
+import useAuthHook from "../hook/useAuthHook";
+import Profile from "../pages/Profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Button from "../components/ButtonRedirect";
 const Navbar = () => {
+  const { auth, user } = useSelector((state) => {
+    return state.auth;
+  });
+  const dropdown = () => {
+    var element = document.querySelector(".dropdown-info");
+    element.classList.toggle("active");
+  };
+
   return (
     <>
       <div className="navbar">
@@ -117,11 +131,38 @@ const Navbar = () => {
           <li className="item">
             <Link to="/women">Women</Link>
           </li>
-          <li className="login">
-            <Link to="login">login</Link>
-          </li>
         </ul>
+        {auth ? (
+          <div className="user">
+            <FontAwesomeIcon
+              icon={faUser}
+              onClick={() => {
+                dropdown();
+              }}
+            />
+            <div className="dropdown-info">
+              <ul>
+                <li>
+                  <Button
+                    redirectPath="profile"
+                    name="Profile"
+                    redirect="true"
+                  />
+                </li>
+                <li>
+                  <Button name="Logout" redirect="false" />
+                </li>
+              </ul>
+            </div>
+            <span>{user.data.username}</span>
+          </div>
+        ) : (
+          <div className="login">
+            <Link to="login">login</Link>
+          </div>
+        )}
       </div>
+
       <Routes>
         <Route path="/all_products" element={<AllProduct />} />
         <Route path="/brands" element={<Brands />} />
@@ -130,6 +171,10 @@ const Navbar = () => {
         <Route path="/login" element={<Loginpages />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
+        {/* auth before access this page  */}
+        <Route element={useAuthHook()}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </>
   );
