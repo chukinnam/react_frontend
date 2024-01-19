@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import AllProduct from "../pages/AllProduct";
 import Brands from "../pages/Brands";
 import HomePage from "../pages/HomePage";
@@ -13,6 +13,8 @@ import Profile from "../pages/Profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/ButtonRedirect";
+import { logout } from "../servers/logoutServer";
+
 const Navbar = () => {
   const { auth, user } = useSelector((state) => {
     return state.auth;
@@ -20,6 +22,10 @@ const Navbar = () => {
   const dropdown = () => {
     var element = document.querySelector(".dropdown-info");
     element.classList.toggle("active");
+  };
+  const navigate = useNavigate();
+  const redirect = () => {
+    navigate("/profile");
   };
 
   return (
@@ -143,14 +149,10 @@ const Navbar = () => {
             <div className="dropdown-info">
               <ul>
                 <li>
-                  <Button
-                    redirectPath="profile"
-                    name="Profile"
-                    redirect="true"
-                  />
+                  <Button name="Profile" onClick={redirect} />
                 </li>
                 <li>
-                  <Button name="Logout" redirect="false" />
+                  <Button name="Logout" onClick={logout} />
                 </li>
               </ul>
             </div>

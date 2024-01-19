@@ -11,7 +11,6 @@ const login = async (userData) => {
       body: JSON.stringify(userData),
     });
     const data = await response.json();
-    console.log("serverpage", data);
     return data;
   } catch (error) {
     console.log(error.json());
@@ -31,7 +30,6 @@ const register = async (userData) => {
     });
 
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log("error:", error);

@@ -57,11 +57,7 @@ const Loginpages = () => {
             </div>
             <div className="form button">
               <input type="submit" value="Submit" />
-              <Button
-                redirect={true}
-                redirectPath={"register"}
-                name={"Register"}
-              />
+              <Button name="register" />
             </div>
           </form>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
 const Button = (props) => {
   const buttonStyle = {
     border: "2px solid rgb(107, 155, 210)",
@@ -12,16 +12,9 @@ const Button = (props) => {
     minWidth: "100px",
     margin: "5px",
   };
-  const navigate = useNavigate();
-  const handlebutton = (e) => {
-    if (props.redirect) {
-      navigate("/" + props.redirectPath);
-    } else {
-      console.log("do.....");
-    }
-  };
+
   return (
-    <button style={buttonStyle} onClick={handlebutton}>
+    <button style={buttonStyle} onClick={props.onClick}>
       {props.name}
     </button>
   );
