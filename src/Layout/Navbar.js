@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import AllProduct from "../pages/AllProduct";
-import Brands from "../pages/Brands";
+import Kids from "../pages/Kids";
 import HomePage from "../pages/HomePage";
 import Loginpages from "../pages/Loginpages";
 import Man from "../pages/Man";
@@ -129,7 +129,7 @@ const Navbar = () => {
             <Link to="/all_products">All Products</Link>
           </li>
           <li className="item">
-            <Link to="/brands">Brands</Link>
+            <Link to="/kids">Kids</Link>
           </li>
           <li className="item">
             <Link to="/man">Man</Link>
@@ -149,10 +149,22 @@ const Navbar = () => {
             <div className="dropdown-info">
               <ul>
                 <li>
-                  <Button name="Profile" onClick={redirect} />
+                  <Button
+                    name="Profile"
+                    onClick={() => {
+                      redirect();
+                      dropdown();
+                    }}
+                  />
                 </li>
                 <li>
-                  <Button name="Logout" onClick={logout} />
+                  <Button
+                    name="Logout"
+                    onClick={() => {
+                      logout();
+                      dropdown();
+                    }}
+                  />
                 </li>
               </ul>
             </div>
@@ -167,7 +179,7 @@ const Navbar = () => {
 
       <Routes>
         <Route path="/all_products" element={<AllProduct />} />
-        <Route path="/brands" element={<Brands />} />
+        <Route path="/kids" element={<Kids />} />
         <Route path="/man" element={<Man />} />
         <Route path="/women" element={<Women />} />
         <Route path="/login" element={<Loginpages />} />

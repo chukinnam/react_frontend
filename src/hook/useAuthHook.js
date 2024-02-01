@@ -5,7 +5,7 @@ const useAuthHook = () => {
   const { auth } = useSelector((state) => {
     return state.auth;
   });
-  console.log("auth value", auth);
+
   return auth ? <Outlet /> : <Navigate to="/login" />;
 };
 

@@ -11,6 +11,7 @@ const Loginpages = () => {
     username: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
   const { auth, user, loading, message } = useSelector((state) => {
     return state.auth;
   });
@@ -18,7 +19,7 @@ const Loginpages = () => {
     if (auth) {
       navigate("/all_products");
     }
-  }, [auth, user, loading, message, dispatch, navigate]);
+  }, [errorMessage, auth, user, loading, message, dispatch, navigate]);
   //handle input value
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,10 +30,19 @@ const Loginpages = () => {
     event.preventDefault();
     // call redux login function adn pass value
     dispatch(login(formValue));
+    if (!auth) {
+      setErrorMessage("User name or Password not correct !!");
+    }
   };
   return (
     <section>
       <div className="LoginContainer">
+        {errorMessage !== "" ? (
+          <div className="erromessage">{errorMessage}</div>
+        ) : (
+          ""
+        )}
+
         <div className="LoginBox">
           <form onSubmit={submit} id="login-form" className="login_form">
             <div className="user_name">
