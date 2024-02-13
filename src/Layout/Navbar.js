@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/ButtonRedirect";
 import { logout } from "../servers/logoutServer";
+import CartComponent from "../components/CartComponent";
 
 const Navbar = () => {
   const { auth, user } = useSelector((state) => {
@@ -169,6 +170,7 @@ const Navbar = () => {
               </ul>
             </div>
             <span>{user.data.username}</span>
+            <CartComponent />
           </div>
         ) : (
           <div className="login">

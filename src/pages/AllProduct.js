@@ -4,11 +4,12 @@ import ProductComponent from "../components/ProductComponent";
 
 const AllProduct = () => {
   const [products, setProducts] = useState([]);
+
+  const getproduct = async () => {
+    const result = await getAllproducts();
+    setProducts(result.data);
+  };
   useEffect(() => {
-    const getproduct = async () => {
-      const result = await getAllproducts();
-      setProducts(result.data);
-    };
     getproduct();
   }, []);
 
@@ -22,6 +23,7 @@ const AllProduct = () => {
               image={element.image}
               name={element.name}
               price={element.price}
+              id={element.id}
             />
           </li>
         ))}
