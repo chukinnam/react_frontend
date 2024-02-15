@@ -4,18 +4,34 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addToCartRedux,
   removeFromCartRedux,
+  minusCartProductRedux,
 } from "../features/cart/cartSlices";
 const ProductComponent = (prop) => {
+  let cartProduct = null;
   const dispatch = useDispatch();
+  const { cart } = useSelector((state) => {
+    return state.cart;
+  });
+  cartProduct = cart.find((element) => element.id == prop.id);
 
   const addToCart = () => {
     dispatch(
-      addToCartRedux({ id: prop.id, name: prop.name, price: prop.price })
+      addToCartRedux({
+        image: prop.image,
+        id: prop.id,
+        name: prop.name,
+        price: prop.price,
+        catalogy: prop.catalogy,
+      })
     );
   };
   const removeFromCart = () => {
     dispatch(removeFromCartRedux({ id: prop.id }));
   };
+  const minusCartProduct = () => {
+    dispatch(minusCartProductRedux({ id: prop.id }));
+  };
+
   return (
     <>
       <div className="product-container">
@@ -38,7 +54,18 @@ const ProductComponent = (prop) => {
           <span className="product-price">{prop.price}</span>
           <div className="actions">
             <Button name={"+"} onClick={addToCart} />
-            <Button name={"-"} onClick={removeFromCart} />
+            {cartProduct ? <div>{cartProduct.qty}</div> : <div> 0 </div>}
+
+            <Button
+              disabled={cartProduct ? false : true}
+              name={"-"}
+              onClick={minusCartProduct}
+            />
+            {cartProduct ? (
+              <Button name={"Remove"} onClick={removeFromCart} />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

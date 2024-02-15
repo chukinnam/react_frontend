@@ -14,7 +14,11 @@ const Button = (props) => {
   };
 
   return (
-    <button style={buttonStyle} onClick={props.onClick}>
+    <button
+      disabled={props.disabled}
+      style={buttonStyle}
+      onClick={props.onClick}
+    >
       {props.name}
     </button>
   );

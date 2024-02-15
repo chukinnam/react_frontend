@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import useAuthHook from "../hook/useAuthHook";
 import Profile from "../pages/Profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Button from "../components/ButtonRedirect";
 import { logout } from "../servers/logoutServer";
 import CartComponent from "../components/CartComponent";
@@ -28,6 +28,9 @@ const Navbar = () => {
   const redirect = () => {
     navigate("/profile");
   };
+  const { cartSum } = useSelector((state) => {
+    return state.cart;
+  });
 
   return (
     <>
@@ -170,6 +173,10 @@ const Navbar = () => {
               </ul>
             </div>
             <span>{user.data.username}</span>
+            <div className="cart-container">
+              <FontAwesomeIcon icon={faShoppingCart} onClick={() => {}} />
+              <span>{cartSum}</span>
+            </div>
             <CartComponent />
           </div>
         ) : (
