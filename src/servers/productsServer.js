@@ -8,6 +8,7 @@ export const getAllproducts = async (page) => {
       },
     });
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.log(error);
@@ -46,11 +47,17 @@ export const getProduictByFilter = async (filter) => {
     }
     if (
       filter.hasOwnProperty("minprice") &&
-      filter.hasOwnProperty("filterprice")
+      filter.hasOwnProperty("filterprice") &&
+      filter.filterprice > filter.minprice
     ) {
       filters += `&maxprice=${filter.filterprice}&minprice=${filter.minprice}`;
+    } else if (
+      filter.hasOwnProperty("maxprice") &&
+      filter.hasOwnProperty("minprice")
+    ) {
+      filters += `&maxprice=${filter.maxprice}&minprice=${filter.minprice}`;
     }
-
+    console.log("filter:", filters);
     const response = await fetch(`/api/products/filter?${filters}`, {
       method: "GET",
       mode: "cors",

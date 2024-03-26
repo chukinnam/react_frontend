@@ -17,6 +17,7 @@ import { logout } from "../servers/logoutServer";
 import CartComponent from "../components/CartComponent";
 import Productdetail from "../pages/Productdetail";
 import CheckoutPage from "../pages/CheckoutPage";
+import CheckoutSuccessPage from "../pages/CheckoutSuccessPage";
 
 const Navbar = () => {
   const { auth, user } = useSelector((state) => {
@@ -41,7 +42,7 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar">
-        <ul className="list">
+        <div className="home_icon">
           <li className="icon">
             <Link to="/">
               <span className="image">
@@ -135,6 +136,8 @@ const Navbar = () => {
               </span>
             </Link>
           </li>
+        </div>
+        <ul className="list">
           <li className="item">
             <Link to="/all_products">All Products</Link>
           </li>
@@ -212,6 +215,7 @@ const Navbar = () => {
         <Route element={useAuthHook()}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/checkoutsuccess" element={<CheckoutSuccessPage />} />
         </Route>
       </Routes>
     </>

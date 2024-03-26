@@ -13,7 +13,7 @@ function CheckoutPage() {
   const submitcheckout = async () => {
     let result = await checkout(cart);
     if (result.success) {
-      navigate(`/${result.loaction}`);
+      navigate(`/${result.location}`);
     } else {
       navigate("/checkoutfail.html");
     }

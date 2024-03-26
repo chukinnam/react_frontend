@@ -30,7 +30,7 @@ const ProductComponent = (prop) => {
     dispatch(removeFromCartRedux({ id: prop.id }));
   };
   const minusCartProduct = () => {
-    dispatch(minusCartProductRedux({ id: prop.id }));
+    dispatch(minusCartProductRedux({ id: prop.id, price: prop.price }));
   };
 
   return (

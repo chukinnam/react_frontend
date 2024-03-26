@@ -52,7 +52,6 @@ const Register = () => {
     navigate,
   ]);
   const handleSubmit = async (event) => {
-    console.log("submit");
     event.preventDefault();
     //call redux register function
     dispatch(

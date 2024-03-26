@@ -8,7 +8,7 @@ const Man = () => {
   const getManAllProduct = async (filter) => {
     const result = await getProduictByFilter(filter);
 
-    setProducts(result.data);
+    setProducts(result.products);
   };
 
   useEffect(() => {

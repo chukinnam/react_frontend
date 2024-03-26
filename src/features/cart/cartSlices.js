@@ -11,6 +11,7 @@ const cartSlice = createSlice({
       );
 
       let total = state.total + 1;
+
       let cartSum = state.cartSum + action.payload.price;
 
       if (orgQty !== undefined) {
@@ -67,7 +68,11 @@ const cartSlice = createSlice({
         (element) => element.id === action.payload.id
       );
       let total = state.total - 1;
-      let cartSum = state.cartSum - action.payload.price;
+      let cartSum = 0;
+      if (total !== 0) {
+        cartSum = state.cartSum - action.payload.price;
+      }
+
       if (orgQty === undefined) {
         return {
           ...state.cart,
