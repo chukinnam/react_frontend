@@ -44,6 +44,7 @@ const Loginpages = () => {
         )}
 
         <div className="LoginBox">
+          <h2 className="title">LOGIN </h2>
           <form onSubmit={submit} id="login-form" className="login_form">
             <div className="user_name">
               <label htmlFor="username">User name:</label>
@@ -67,14 +68,14 @@ const Loginpages = () => {
             </div>
             <div className="form button">
               <input type="submit" value="Submit" />
+              <Button
+                name="Create Account"
+                onClick={() => {
+                  navigate("/register");
+                }}
+              />
             </div>
           </form>
-          <Button
-            name="register"
-            onClick={() => {
-              navigate("/register");
-            }}
-          />
         </div>
       </div>
     </section>

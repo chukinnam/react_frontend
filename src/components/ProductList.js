@@ -2,9 +2,9 @@ import React from "react";
 import ProductComponent from "../components/ProductComponent";
 function ProductList(props) {
   return (
-    <ol>
+    <ol className="product_list">
       {props.products.map((element) => (
-        <li key={element.id}>
+        <li className="product" key={element.id}>
           <ProductComponent
             catalogy={element.category}
             image={element.image}

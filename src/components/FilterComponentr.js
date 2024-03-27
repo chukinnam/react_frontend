@@ -60,7 +60,7 @@ function FilterComponentr({
     <>
       <div>
         <form onSubmit={formsubmit}>
-          <h2>Catalogy</h2>
+          <h3>Filter </h3>
           {catalogy === "all" ? (
             <>
               <input

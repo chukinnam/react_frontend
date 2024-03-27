@@ -10,6 +10,7 @@ const Button = (props) => {
     cursor: "pointer",
     padding: "5px 10px",
     minWidth: "100px",
+    width: "50%",
     margin: "5px",
   };
 

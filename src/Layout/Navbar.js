@@ -43,7 +43,7 @@ const Navbar = () => {
     <>
       <div className="navbar">
         <div className="home_icon">
-          <li className="icon">
+          <div className="icon">
             <Link to="/">
               <span className="image">
                 <svg
@@ -135,7 +135,7 @@ const Navbar = () => {
                 </svg>
               </span>
             </Link>
-          </li>
+          </div>
         </div>
         <ul className="list">
           <li className="item">

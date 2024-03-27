@@ -71,7 +71,7 @@ const Register = () => {
       if (value.length < 8) {
         setFormValue((prevState) => ({
           ...prevState,
-          usernameErrorMessage: "at least 8 characters ",
+          usernameErrorMessage: "<ul><li>at least 8 characters</li></ul> ",
           formvalidated: false,
         }));
       } else {
@@ -103,7 +103,8 @@ const Register = () => {
       if (formVlaue.password1 !== value) {
         setFormValue((prevState) => ({
           ...prevState,
-          password2ErrorMessage: "must mutch with password match ",
+          password2ErrorMessage:
+            "<ul><li>must mutch with password match</li></ul> ",
           formvalidated: false,
         }));
       } else {
@@ -123,70 +124,90 @@ const Register = () => {
         <div className="register-container">
           <form id="register_form" onSubmit={handleSubmit}>
             <div className="register flexbox">
+              <h2 className="title">CREATE ACCOUNT</h2>
               <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                  required
-                  type="text"
-                  name="username"
-                  id="username"
-                  value={formVlaue.username}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleValitation(e);
-                  }}
-                />
-                {formVlaue.usernameErrorMessage.length > 0 && (
-                  <span className="error-message">
-                    {formVlaue.usernameErrorMessage}
-                  </span>
-                )}
+                <div>
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    required
+                    type="text"
+                    name="username"
+                    id="username"
+                    value={formVlaue.username}
+                    onChange={(e) => {
+                      handleChange(e);
+                      handleValitation(e);
+                    }}
+                  />
+                </div>
+                <div>
+                  {formVlaue.usernameErrorMessage.length > 0 && (
+                    <span className="error-message">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: formVlaue.usernameErrorMessage,
+                        }}
+                      ></div>
+                    </span>
+                  )}
+                </div>
               </div>
               <div>
-                <label htmlFor="password1">Password:</label>
-                <input
-                  required
-                  type="password"
-                  name="password1"
-                  id="password1"
-                  value={formVlaue.password1}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleValitation(e);
-                  }}
-                />
-                {formVlaue.password1ErrorMessage.length > 0 && (
-                  <span className="error-message">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: formVlaue.password1ErrorMessage,
-                      }}
-                    ></div>
-                  </span>
-                )}
+                <div>
+                  <label htmlFor="password1">Password:</label>
+                  <input
+                    required
+                    type="password"
+                    name="password1"
+                    id="password1"
+                    value={formVlaue.password1}
+                    onChange={(e) => {
+                      handleChange(e);
+                      handleValitation(e);
+                    }}
+                  />
+                </div>
+                <div>
+                  {formVlaue.password1ErrorMessage.length > 0 && (
+                    <span className="error-message">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: formVlaue.password1ErrorMessage,
+                        }}
+                      ></div>
+                    </span>
+                  )}
+                </div>
               </div>
               <div>
-                <label htmlFor="password2">Confirm Password</label>
-                <input
-                  required
-                  type="password"
-                  name="password2"
-                  id="password2"
-                  value={formVlaue.password2}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleValitation(e);
-                  }}
-                ></input>
-                {formVlaue.password2ErrorMessage.length > 0 && (
-                  <span className="error-message">
-                    {formVlaue.password2ErrorMessage}
-                  </span>
-                )}
+                <div>
+                  <label htmlFor="password2">Confirm Password</label>
+                  <input
+                    required
+                    type="password"
+                    name="password2"
+                    id="password2"
+                    value={formVlaue.password2}
+                    onChange={(e) => {
+                      handleChange(e);
+                      handleValitation(e);
+                    }}
+                  ></input>
+                </div>
+                <div>
+                  {formVlaue.password2ErrorMessage.length > 0 && (
+                    <span className="error-message">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: formVlaue.password2ErrorMessage,
+                        }}
+                      ></div>
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="submit">
               <input
+                className="submit"
                 disabled={!formVlaue.formvalidated}
                 type="submit"
                 value="Submit"

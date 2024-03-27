@@ -122,43 +122,58 @@ function Gallery() {
     });
   }, []);
   return (
-    <div className="image-gallery">
-      <div className="gallery">
-        <div className="container">
-          <div className="carousel gallery-images">
-            <div className="a">
-              <div className="item gallery">
-                <img
-                  draggable="false"
-                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                  src="photo/banner_men.webp"
-                />
+    <>
+      <h2>Ttle</h2>
+      <div className="image-gallery">
+        <div className="gallery">
+          <div className="container">
+            <div className="carousel gallery-images">
+              <div className="a">
+                <div className="item gallery">
+                  <img
+                    draggable="false"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    src="photo/banner_men.webp"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="b">
-              <div className="item gallery">
-                <img
-                  draggable="false"
-                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                  src="photo/banner_men.webp"
-                />
+              <div className="b">
+                <div className="item gallery">
+                  <img
+                    draggable="false"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    src="photo/banner_men.webp"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="c">
-              <div className="item gallery">
-                <img
-                  draggable="false"
-                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                  src="photo/banner_men.webp"
-                />
+              <div className="c">
+                <div className="item gallery">
+                  <img
+                    draggable="false"
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    src="photo/banner_men.webp"
+                  />
+                </div>
               </div>
             </div>
           </div>
+          <div className="next">NEXT</div>
+          <div className="prev">PREVIOUS</div>
         </div>
-        <div className="next">NEXT</div>
-        <div className="prev">PREVIOUS</div>
       </div>
-    </div>
+    </>
   );
 }
 
